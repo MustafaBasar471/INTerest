@@ -50,6 +50,10 @@ const UserProfile = () => {
     navigate('/login');
   };
 
+  const onFailure = (res) => {
+    console.log("Login Failed ! res:", res)
+  }
+
   if (!user) return <Spinner message="Loading profile" />;
 
   return (
@@ -86,7 +90,8 @@ const UserProfile = () => {
                   </button>
                 )}
                 onLogoutSuccess={logout}
-                cookiePolicy="single_host_origin"
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'} 
               />
             )}
           </div>

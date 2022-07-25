@@ -16,8 +16,9 @@ const Login = () => {
   }
   const responseGoogle = (response) => {
     localStorage.setItem('user', JSON.stringify(response.profileObj));
-
+    
     const { name, googleId, imageUrl } = response.profileObj;
+    // console.log(name, googleId, imageUrl)
 
     const doc = {
       _id: googleId,
@@ -50,6 +51,13 @@ const Login = () => {
           </div>
 
           <div className='shadow-2xl'>
+          {/* <GoogleLogin
+            clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
+            buttonText="Sign In with Google"
+            onSuccess={responseGoogle}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+          /> */}
             <GoogleLogin
               clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
               render={(renderProps) => (
